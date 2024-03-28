@@ -1,0 +1,14 @@
+<div class="calculator">
+    <h2>Simple Calculator</h2>
+    <form (submit)="calculate()">
+      <input type="number" class="operand-input" [(ngModel)]="operation.operand1" [ngModelOptions]="{standalone: true}" placeholder="Operand 1" required>
+      <select class="operator-select" [(ngModel)]="operation.operator" [ngModelOptions]="{standalone: true}" required>
+        <option *ngFor="let value of operatorValue | keyvalue" [value] = "value.key"> {{value.value}}</option>
+      </select>
+      <input type="number" class="operand-input" [(ngModel)]="operation.operand2" [ngModelOptions]="{standalone: true}" placeholder="Operand 2" required>
+      <button type="submit" class="calculate-button">Calculate</button>
+    </form>
+    <div *ngIf="result!== undefined" class="result-container">
+      <p class="result-text">Result: {{ result }}</p>
+    </div>
+  </div>
