@@ -1,0 +1,12 @@
+ des méthodes privées(c'est trés important) pour gérer les différentes étapes de votre opération de transfert.
+
+ des requêtes préparées pour éviter les attaques par injection SQL ou bien les attaques security (des requetes en dur dans le code).
+
+ une seule connexion à la base de données et la gérer correctement (pas besoin d'appeller la bdd plusieur fois pour un seul besoin).
+
+ des transactions pour garantir l'intégrité de vos opérations de transfert: avec spring boot on utilise les transaction surtout dans le cadre ou on a des module bancaire on passe pas une etape a une autre ca risque d'avoir des problems par exemple de commandes et le payement il passe c'est comme si on architecture micro service ce qui est trés bien on a toujours un orchestrale qui verifie qu'on saute d'une etape a une autre que lorsque la transaction est fini sinon rollback
+
+NB: 
+en partant des notions solid de java chaque methode et classe est responsable a faire un seul traitement pas besoin d'avoir 300 ligne de code dans une seul methode c'est trop risqué et c'est plus maintenable.
+
+Pour une proposition d'un code propore je peux demander une factorisation de la methode aussi ainsi que le decoupage dans des services si besoin ou d'adapter une architecture bien adequoite.

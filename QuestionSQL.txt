@@ -1,0 +1,19 @@
+1- Dans l'exemple de la table PANIERS, le champ DATE_COMMANDE est NULL pour indiquer que la commande associée à ce panier n'a pas encore été validée ou finalisée. Techniquement, NULL signifie l'absence de valeur pour ce champ dans la base de données. Fonctionnellement, cela indique que le processus d'achat n'est pas encore terminé pour ce panier.
+
+2- SELECT ID_PANIER FROM PANIERS WHERE ID_UTILISATEUR = 'adresse_email_utilisateur' AND DATE_COMMANDE IS NULL;
+
+3- Pour garantir une exécution rapide de la requête de récupération de l'identifiant du panier actif, assurez-vous d'avoir un index sur la colonne ID_UTILISATEUR dans la table PANIERS.
+
+4- SELECT ID_PANIER, COUNT(*) AS NOMBRE_ARTICLES
+FROM ARTICLES
+JOIN PANIERS ON ARTICLES.ID_PANIER = PANIERS.ID_PANIER
+WHERE YEAR(PANIERS.DATE_CREATION) = 2018
+GROUP BY ID_PANIER;
+
+5- SELECT PANIERS.ID_PANIER, COALESCE(COUNT(ARTICLES.ID_ARTICLE), 0) AS NOMBRE_ARTICLES
+FROM PANIERS
+LEFT JOIN ARTICLES ON PANIERS.ID_PANIER = ARTICLES.ID_PANIER
+WHERE YEAR(PANIERS.DATE_CREATION) = 2018
+GROUP BY PANIERS.ID_PANIER;
+
+
